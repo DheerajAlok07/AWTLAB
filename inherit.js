@@ -23,6 +23,6 @@ class student1 extends student
     }
 }
 
-let s=new student1("hello",1251);
+let s=new student1("hello",1207);
 s.display();
 s.display1();
