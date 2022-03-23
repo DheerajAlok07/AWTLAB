@@ -1,0 +1,19 @@
+{
+  "name": "awtlab_1207",
+  "version": "1.0.0",
+  "description": "",
+  "main": "async.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DheerajAlok07/AWTLAB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DheerajAlok07/AWTLAB/issues"
+  },
+  "homepage": "https://github.com/DheerajAlok07/AWTLAB#readme"
+}
