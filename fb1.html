@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body align="center">
+    Student Name : <input type="text" id="uname" /><br />
+    Roll Number : <input type="text" id="rollno" /><br />
+    Passwword: <input type="password" id="pwd" /><br />
+
+    <button id="submit">Enter</button>
+
+    <button id="clear">Clear</button>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyARn3A9mMIeqcZY0c_T_S_hePrjwB9xKJ0",
+        authDomain: "student-87ce6.firebaseapp.com",
+        databaseURL: "https://student-87ce6-default-rtdb.firebaseio.com",
+        projectId: "student-87ce6",
+        storageBucket: "student-87ce6.appspot.com",
+        messagingSenderId: "863074043452",
+        appId: "1:863074043452:web:d9d69b2c1ac11eb3816539",
+        measurementId: "G-6S2PTL1ZM7",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      import {
+        getDatabase,
+        ref,
+        get,
+        set,
+        child,
+        update,
+        remove,
+      } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+
+      const db = getDatabase();
+      var studname = document.getElementById("uname");
+      var rllno = document.getElementById("rollno");
+      var psswd = document.getElementById("pwd");
+
+      var subbutton = document.getElementById("submit");
+      var clrbutton = document.getElementById("clear");
+
+      function submitdata() {
+        set(ref(db, "student1/" + rllno.value), {
+          StudentName: studname.value,
+          RollNumber: rllno.value,
+          Password: psswd.value,
+        })
+          .then(() => alert("student data inserted successfully"))
+          .catch((err) => alert("some error happened" + err));
+      }
+
+      subbutton.addEventListener("click", submitdata);
+    </script>
+  </body>
+</html>

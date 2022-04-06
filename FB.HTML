@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body align="center">
+    Student Name : <input type="text" id="uname" /><br />
+    Roll Number : <input type="text" id="rollno" /><br />
+    Passwword: <input type="password" id="pwd" /><br />
+
+    <button id="submit">Insert</button>
+
+    <button id="clear">Clear</button>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDXfZaScT5CN3ioy1k8GWZAbu9iC9Xfl7Y",
+        authDomain: "registration-80423.firebaseapp.com",
+        projectId: "registration-80423",
+        storageBucket: "registration-80423.appspot.com",
+        messagingSenderId: "51335349721",
+        appId: "1:51335349721:web:32445305a98608edf845c8",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      import {
+        getDatabase,
+        ref,
+        get,
+        set,
+        child,
+        update,
+        remove,
+      } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+
+      const db = getDatabase();
+      var studname = document.getElementById("uname");
+      var rllno = document.getElementById("rollno");
+      var psswd = document.getElementById("pwd");
+
+      var subbutton = document.getElementById("submit");
+      var clrbutton = document.getElementById("clear");
+
+      function submitdata() {
+        set(ref(db, "student/" + rllno.value), {
+          StudentName: studname.value,
+          RollNumber: rllno.value,
+          Password: psswd.value,
+        })
+          .then(() => alert("student data inserted successfully"))
+          .catch((err) => alert("some error happened" + err));
+      }
+
+      subbutton.addEventListener("click", submitdata);
+    </script>
+  </body>
+</html>
